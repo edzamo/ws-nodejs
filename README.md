@@ -46,3 +46,212 @@ node -v
 npm -v
 
 🎉 ¡Listo! Ahora puedes usar Node.js y npm 🚀
+```
+
+# 📌 Inicializar un proyecto npm 
+
+✅  Ejemplo de uso
+
+```npm
+
+npm init -y
+
+```
+
+## 📌 Variables Globales en Node.js: `__dirname` y `__filename`
+
+En **Node.js**, las variables globales `__dirname` y `__filename` son útiles para trabajar con archivos y directorios.
+
+##  __dirname
+
+✅ **¿Qué es?**  
+`__dirname` devuelve la **ruta absoluta** del directorio donde se encuentra el script actual.
+
+### 📌 **Ejemplo de uso**
+```javascript
+console.log(__dirname);
+```
+
+---
+
+
+##  __filename
+
+✅ ¿Qué es? __filename devuelve la ruta absoluta del archivo actual, incluyendo el nombre del archivo.
+
+📌 Ejemplo de uso
+
+```javascript
+console.log(__filename);
+
+const path = require("path");
+
+console.log(path.basename(__filename)); // index.js
+console.log(path.basename(__filename, ".js")); // index
+
+```
+---
+
+
+
+---
+# 📌 process.argv en Node.js
+
+✅ ¿Qué es process.argv? 
+process.argv es una propiedad del objeto global process en Node.js que devuelve un array de strings, donde cada elemento representa un argumento pasado al script al ejecutarlo desde la terminal.
+
+ 📌 Estructura de process.argv 
+
+Cuando ejecutas un script de Node.js, process.argv contiene al menos dos elementos:
+1.	El primer elemento (process.argv[0]) → Ruta del ejecutable de Node.js.
+2.	El segundo elemento (process.argv[1]) → Ruta del script que se está ejecutando.
+3.	Los siguientes elementos (process.argv[2] en adelante) → Argumentos pasados por el usuario.
+
+```javascript
+// args.js
+console.log("Lista de argumentos:", process.argv);
+
+// Obtener los argumentos después del índice 2
+const args = process.argv.slice(2);
+console.log("Argumentos recibidos:", args);
+
+```
+2️⃣ Ejecutar el script con argumentos
+
+```bash
+node args.js Hola Mundo 123
+
+```
+
+🚀 ¿Para qué sirve process.argv?
+
+* ✅ Permite recibir datos dinámicos sin modificar el código.
+* ✅ Útil en scripts CLI (Command Line Interface).
+* ✅ Ideal para automatización y configuraciones personalizadas.
+
+
+# 🚀 Promesas y async/await en JavaScript
+
+## 📘 ¿Qué es una `Promise`?
+
+Una **Promesa** es un objeto en JavaScript que representa la **finalización o el fracaso** de una operación **asíncrona**.
+
+---
+
+### 📊 Estados de una promesa
+
+| Estado      | Descripción                                        |
+|-------------|----------------------------------------------------|
+| `pending`   | Promesa pendiente, aún no ha sido resuelta o rechazada |
+| `fulfilled` | La operación fue completada con éxito (`resolve`) |
+| `rejected`  | La operación falló (`reject`)                      |
+
+---
+
+### ✅ Sintaxis básica
+
+```javascript
+const promesa = new Promise((resolve, reject) => {
+  // lógica asíncrona
+});
+```
+
+---
+
+### 🔁 Ejemplo con `.then()` y `.catch()`
+
+```javascript
+function obtenerDatos() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const exito = true;
+
+      if (exito) {
+        resolve("✅ Datos recibidos correctamente.");
+      } else {
+        reject("❌ Error al obtener los datos.");
+      }
+    }, 2000);
+  });
+}
+
+obtenerDatos()
+  .then((resultado) => console.log(resultado))
+  .catch((error) => console.error(error));
+```
+
+---
+
+## ⚡ ¿Qué es `async` / `await`?
+
+`async` y `await` son una **forma más legible y moderna** de trabajar con promesas.
+
+- `async`: define una función que devuelve automáticamente una promesa.
+- `await`: detiene la ejecución hasta que una promesa se resuelva o rechace.
+
+---
+
+### 🔁 Mismo ejemplo usando `async/await`
+
+```javascript
+async function mostrarDatos() {
+  try {
+    const resultado = await obtenerDatos();
+    console.log(resultado);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+mostrarDatos();
+```
+
+---
+
+## 🧠 ¿Cuándo usar cada uno?
+
+| Situación                       | Recomendación         |
+|--------------------------------|------------------------|
+| Código corto o encadenado      | Usa `.then()` y `.catch()` |
+| Flujo largo o legible          | Usa `async/await`     |
+| Múltiples promesas en paralelo | Usa `Promise.all()`   |
+
+---
+
+## 🧪 Ejemplo adicional: Simular petición a una API
+
+```javascript
+function obtenerUsuarios() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(["Ana", "Luis", "Carlos"]);
+    }, 1500);
+  });
+}
+
+async function mostrarUsuarios() {
+  const usuarios = await obtenerUsuarios();
+  console.log("Usuarios:", usuarios);
+}
+
+mostrarUsuarios();
+```
+
+---
+
+## 🧯 Manejo de errores
+
+Tanto `.catch()` como `try/catch` permiten manejar errores:
+
+- `.catch()` se usa con `.then()`
+- `try/catch` se usa con `async/await`
+
+---
+
+## 📝 Conclusión
+
+- Las **promesas** ayudan a manejar operaciones asíncronas de forma eficiente.
+- `async/await` hace que el código sea **más limpio, legible y fácil de mantener**.
+- Son herramientas fundamentales para trabajar con APIs, bases de datos, archivos, etc.
+
+> 💡 Dominar promesas y `async/await` es clave para trabajar con JavaScript moderno y Node.js.
