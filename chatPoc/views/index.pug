@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  div 
+    label Name: 
+    input#inputUser(type="text")
+  div 
+    label Message
+    input#inputMessage(type="text") 
+  
+  button#buttonSend  Send
+
+
+
+  script(src="/socket.io/socket.io.js")
+  script.
+    const socket= io();
+
+
+  const inputUser = document.getElementById('inputUser');
+  const inputMessage = document.getElementById('inputMessage');
+  const buttonSend = document.getElementById('buttonSend');
+
+  buttonSend.addEventListener('click', ()=>{
+    socket.emit('message_chat', {
+      user: inputUser.value,
+      message: inputMessage.value
+
+    });
+  });

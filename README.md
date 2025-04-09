@@ -255,3 +255,70 @@ Tanto `.catch()` como `try/catch` permiten manejar errores:
 - Son herramientas fundamentales para trabajar con APIs, bases de datos, archivos, etc.
 
 > 💡 Dominar promesas y `async/await` es clave para trabajar con JavaScript moderno y Node.js.
+
+
+## Instalacion de nodeJS
+
+### 📌 **Instalacion de NodeJs**
+```console
+
+ * npm install -g nodemon      
+ * npm install express   
+ * npm install dotenv
+ * npm install -g express-generator
+
+
+
+```
+
+
+### 📌 **Instalacion de NodeJs Global**
+```console
+ * npm install -g express-generator
+ express --help
+
+  Usage: express [options] [dir]
+
+  Options:
+
+        --version        output the version number
+    -e, --ejs            add ejs engine support
+        --pug            add pug engine support
+        --hbs            add handlebars engine support
+    -H, --hogan          add hogan.js engine support
+    -v, --view <engine>  add view <engine> support (dust|ejs|hbs|hjs|jade|pug|twig|vash) (defaults to jade)
+        --no-view        use static html instead of view engine
+    -c, --css <engine>   add stylesheet <engine> support (less|stylus|compass|sass) (defaults to plain css)
+        --git            add .gitignore
+    -f, --force          force on non-empty directory
+    -h, --help           output usage information
+❯ express --no-view --git firstApp
+
+   create : firstApp/
+   create : firstApp/public/
+   create : firstApp/public/javascripts/
+   create : firstApp/public/images/
+   create : firstApp/public/stylesheets/
+   create : firstApp/public/stylesheets/style.css
+   create : firstApp/routes/
+   create : firstApp/routes/index.js
+   create : firstApp/routes/users.js
+   create : firstApp/public/index.html
+   create : firstApp/.gitignore
+   create : firstApp/app.js
+   create : firstApp/package.json
+   create : firstApp/bin/
+   create : firstApp/bin/www
+
+   change directory:
+     $ cd firstApp
+
+   install dependencies:
+     $ npm install
+
+   run the app:
+     $ DEBUG=firstapp:* npm start
+
+* npm install
+
+```
